@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+
+
+
+{% block head_description %}
+    {% load staticfiles %}
+    <title>NXT | Portfolio</title>
+    <meta name="description" content="Przekonaj się, że nasza współpraca oznacza prostą drogę do celu!">
+    <meta name="keywords" content="Agencja Kontakt Telefon zadzwoń">
+
+    <meta name=”author” content=””/>
+    <meta property=”og:title” content=”Poznaj nasze realizacje”/>
+    <meta property=”og:type” content=”kontakt”/>
+    <meta property=”og:image” content=”http://nxt.flyup.pro{% static 'layout/img/NXT_mini_KONTAKT.jpg' %}”/>
+{% endblock %}
+
+
+{% block header-action %}
+    <div class="header-filter">
+        <div class="filter-icon action-filter open-action" data-action="filter-overlay"><span></span></div>
+    </div>
+{% endblock %}
+
+
+{% block filter %}
+    <div id="header-actions-overlay">
+        <a href="" class="action-close header-close"></a>
+        <div class="action-overlay filter-overlay">
+            <h6 class="widget-title">Filtr</h6>
+            <ul id="grid-filter" class="category-list grid-filter" data-related-grid="portfolio-grid">
+                {% for portfolio_filter in portfolio_filters %}
+                    <li><a data-filter=".{{ portfolio_filter.key }}" href="#">{{ portfolio_filter.title }}</a></li>
+                {% endfor %}
+
+                <li><a data-filter="*" href="#">Wszystkie</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO & BODY -->
+    <div id="hero-and-body">
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            <div id="portfolio-grid" class="isotope-grid portfolio-container style-column-3 clearfix text-light">
+                {% for portfolio_case in portfolio_cases %}
+                    <div class="isotope-item portfolio-item
+                        {% for filter in portfolio_case.filters.all %}
+                            {{ filter.key }}
+                        {% endfor %}
+                        ">
+                        <div class="portfolio-item-inner item-inner">
+                            <a href="{% url 'portfolio:show' case_title=portfolio_case.title_seo %}" class="thumb-hover text-light
+                            {% if portfolio_case.vimeo_id %}
+                            videobg-section
+                            {% endif %}
+                            "
+                               data-phattype="vimeo"
+                                    {% if portfolio_case.vimeo_id %}
+                               data-phatvideoid="{{ portfolio_case.vimeo_id }}"
+                                    {% endif %}
+                               data-phatratio="21/9"
+                               data-phatplayonhover="true"
+                            >
+
+
+                                <img src="{{ portfolio_case.top_photo_thumbnail.url }}"
+                                     alt="{{ portfolio_case.title_seo }}">
+                                <div class="overlay-caption bottom align-left">
+                                    <span class="caption-sub portfolio-category">{{ portfolio_case.type }}</span>
+                                    <h2 class="caption-name portfolio-name portfolio-align-left">{{ portfolio_case.title }}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div> <!-- END grid -->
+
+        </section>
+        <!-- PAGEBODY -->
+
+    </div>
+    <!-- HERO & BODY -->
+
+
+{% endblock %}

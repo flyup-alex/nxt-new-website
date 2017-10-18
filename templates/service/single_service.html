@@ -1,0 +1,116 @@
+{% extends 'layout.html' %}
+
+
+{% block head_description %}
+    <title>NXT | {{ single_case.title }}</title>
+    <meta name="description" content="{{ single_case.description }}">
+    <meta name="keywords" content="{{ single_case.keywords }}">
+    <meta name="author" content="{{ single_case.author }}">
+
+    <meta name="og:title" content="NXT | {{ single_case.title }}">
+    <meta name="og:description" content="{{ single_case.description }}">
+    <meta name="og:type" content="{{ single_case.type }}">
+    <meta name="og:image" content="http://nxt.flyup.pro{{ single_case.top_photo_thumbnail.url }}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO & BODY -->
+    <div id="hero-and-body">
+        <section id="hero" class="hero text-light parallax-section service-case-photo"
+                 data-parallax-image="{{ single_case.top_photo.url }}">
+
+            <div id="page-title" class="wrapper-big">
+                <h1><strong>{{ single_case.title }}</strong></h1>
+
+                <h5>{{ single_case.trade }}</h5>
+            </div>
+
+        </section>
+        <!-- HERO -->
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            <div class="spacer-big"></div>
+
+            <div class="wrapper-small">
+                <div class="column-section spaced-big clearfix">
+                    <div class="column last-col">
+                        <p class="h5">{{ single_case.content|safe }}</p>
+                    </div>
+                </div> <!-- END .column-section -->
+            </div><!-- END .wrapper -->
+
+        </section>
+        <br>
+        <br>
+        <br>
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            {% for photo in portfolio_photos %}
+
+                <div id="portfolio-grid" class="isotope-grid portfolio-container style-column-2 clearfix text-light">
+
+                    <div class="isotope-item portfolio-item double-width advertising repair_displaying_img">
+                        <div class="portfolio-item-inner item-inner">
+                            <a href="#" class="thumb-hover scale text-light">
+                                <img src="{{ photo.photo.url }}" alt="SEO">
+                                <div class="overlay-caption bottom align-left">
+                                    <span class="caption-sub portfolio-category"></span>
+                                    <h2 class="caption-name portfolio-name"></h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div> <!-- END grid -->
+
+            {% endfor %}
+
+        </section>
+        <!-- PAGEBODY -->
+
+        <!-- PORTFOLIO CASES -->
+
+       <!--
+
+       <section>
+            <div class="container">
+                <div class="row text-center">
+                    <div id="page-title" class="wrapper-big">
+                        <h2><strong>Przykładowe realizacje</strong></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="spacer-medium"></div>
+        </section>
+
+        -->
+
+        <section>
+            <div class="container-fluid no-padding">
+                <div class="row">
+                    {% for portfolio_case in single_case.portfolio_cases.all %}
+                        <a href="{% url 'portfolio:show' case_title=portfolio_case.title_seo %}">
+                            <div class="col-md-4 no-padding">
+                                <div class="full-width-photo"
+                                     style="background-image: url('{{ portfolio_case.top_photo.url }}')">
+                                    <h6 class="portfolio-thumbnail-title service-portfolio-title">{{ portfolio_case.title }}</h6>
+
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!--- END OF PORTFOLIO CASES -->
+
+
+        <!-- HERO & BODY -->
+    </div>
+
+{% endblock %}

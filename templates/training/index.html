@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+
+{% block head_description %}
+    {% load staticfiles %}
+    <title>NXT | Szkolenia</title>
+    <meta name="description" content="Wyprzedzaj konkurencję. Wybierz szkolenia, które pomogą Ci zostać liderem swojej branży.">
+    <meta name="keywords" content="">
+
+    <link rel=”author” href=””/>
+    <meta property=”og:title” content=”Podnieś swoją poprzeczkę”/>
+    <meta property=”og:type” content=””/>
+    <meta property=”og:image” content=”http://nxt.flyup.pro{% static 'layout/img/NXT_mini_SZKOLENIA.jpg' %}”/>
+{% endblock %}
+
+
+{% block filter %}
+
+{% endblock %}
+
+
+{% block content %}
+    {% load staticfiles %}
+    <section id="hero" class="hero-big"
+             style="background: url('{% static 'layout/img/NXT_szkolenia_.jpg' %}'); background-size: cover; background-position: center center;">
+        <div id="page-title" class="wrapper">
+            <!-- <h1 class="h2">We are a full service agency<br>based in London</h1> -->
+        </div>
+    </section>
+    {% for section in sections %}
+        <div class="spacer-medium"></div>
+        <div class="spacer-medium hidden-768"></div>
+        <div class="title-section">
+            <h3 class="align-center training-title">{{ section.title }}</h3>
+        </div>
+
+
+        <!-- HERO & BODY -->
+        <div id="hero-and-body">
+
+            <!-- PAGEBODY -->
+
+            <section id="page-body">
+
+                <div id="portfolio-grid" class="isotope-grid portfolio-container style-column-3 clearfix text-light">
+
+                    {% for portfolio_case in portfolio_cases %}
+                        {% if section.title == portfolio_case.section.title %}
+                            <div class="isotope-item portfolio-item {{ portfolio_case.filters.first.key }}">
+                                <div class="portfolio-item-inner item-inner">
+                                    <a href="{% url 'training:show' training_title=portfolio_case.title_seo %}" class="thumb-hover text-light
+                            {% if portfolio_case.vimeo_id %}
+                            videobg-section
+                            {% endif %}
+                            "
+                                       data-phattype="vimeo"
+                                            {% if portfolio_case.vimeo_id %}
+                                       data-phatvideoid="{{ portfolio_case.vimeo_id }}"
+                                            {% endif %}
+                                       data-phatratio="21/9"
+                                       data-phatplayonhover="true"
+                                    >
+
+
+                                        <img src="{{ portfolio_case.top_photo_thumbnail.url }}"
+                                             alt="{{ portfolio_case.title_seo }}">
+                                        <div class="overlay-caption bottom align-left">
+                                            <span class="caption-sub portfolio-category">{{ portfolio_case.type }}</span>
+                                            <h2 class="caption-name portfolio-name">{{ portfolio_case.title }}</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% else %}
+                            <hr>
+                            <h1>działa!</h1>
+                        {% endif %}
+                    {% endfor %}
+
+                </div> <!-- END grid -->
+
+            </section>
+            <!-- PAGEBODY -->
+
+        </div>
+        <!-- HERO & BODY -->
+    {% endfor %}
+
+{% endblock %}

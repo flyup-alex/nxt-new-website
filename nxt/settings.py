@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
+from nxt.db_settings import DATABASE_SETTINGS
 
 import os
 
 import sys
 
-#from nxt.db_settings import DATABASE_SETTINGS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'portfolio.apps.PortfolioConfig',
+    'about.apps.AboutConfig',
+    'blog.apps.BlogConfig',
+    'service.apps.ServiceConfig',
+    'training.apps.TrainingConfig',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -74,11 +81,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'nxt.wsgi.application'
 
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'Basic',
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-#DATABASES = DATABASE_SETTINGS
+DATABASES = DATABASE_SETTINGS
 
 
 # Password validation
@@ -122,3 +134,4 @@ ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 STATIC_ROOT = os.path.join(ENV_PATH, '../static/')
 MEDIA_ROOT = os.path.join(ENV_PATH, '../media/')
 MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = 'uploads/'

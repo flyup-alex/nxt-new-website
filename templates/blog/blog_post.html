@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block head_description %}
+    <title>NXT | {{ post.title }}</title>
+    <meta name="description" content="{{ post.description }}">
+    <meta name="keywords" content="{{ post.keywords }}">
+
+    <meta name=”author” content=”{{ post.author }}”/>
+    <meta property=”og:title” content=”{{ post.title }}”/>
+    <meta property=”og:type” content=”{{ post.type }}”/>
+    <meta property=”og:image” content=”http://nxt.flyup.pro{{ post.thumbnail.url }}”/>
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO & BODY -->
+    <div id="hero-and-body">
+
+        <!-- HERO  -->
+        <section id="hero" class="side-left-small"
+                 style="background: url({{ post.top_photo.url }}); background-position: center center; background-size: cover;">
+        </section>
+        <!-- HERO -->
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            <div class="spacer-small"></div>
+
+            <div id="page-title" class="wrapper align-center">
+                <span class="post-cat">{{ post.trade }}</span>
+                <div class="spacer-small"></div>
+                <div class="post-name"><h1>{{ post.headline }}</h1></div>
+                <div class="post-meta">
+                    <figure class="meta-avatar"><a href="{{ post.writer.linked_in_link }}"><img alt="" src="{{ post.writer.profile_photo.url }}" class="avatar"
+                                                                 height="100" width="100"/></a></figure>
+                    <div class="meta-author"><span>by</span>{{ post.writer.name }} {{ post.writer.last_name }}</div>
+                    <span class="post-date">{{ post.date_time|date:"d.m.Y"}}</span>
+                </div>
+            </div> <!-- END #page-title -->
+
+            <div id="blog-single">
+                <div class="blog-content wrapper-small">
+                    {{ post.content|safe }}
+                </div>
+
+                <div class="wrapper-small">
+
+                    <div class="spacer-small"></div>
+
+                    <!-- LEAVE COMMENT -->
+                    <div id="blog-leavecomment" class="leavecomment">
+                        <div class="sharethis-inline-share-buttons"></div>
+
+                    </div> <!-- END #blog-leavecomment -->
+                    <!-- LEAVE COMMENT -->
+
+                </div> <!-- END .wrapper-small -->
+            </div>
+
+        </section>
+        <!-- PAGEBODY -->
+
+    </div>
+    <!-- HERO & BODY -->
+
+{% endblock %}
+
+{% block additional_scripts %}
+{% load staticfiles %}
+<script type="text/javascript" src="{% static "layout/js/jquery-1.12.4.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/plugins.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/jquery.imagesloaded.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/jquery.isotope.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/jquery.owl.carousel.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/jquery.sticky-kit.min.js" %}"></script>
+
+{% endblock %}
+
+{% block additional_headlinks %}
+
+<link rel="stylesheet" id="owlcarousel-css" href="{% static "layout/css/owl.carousel.css" %}" media="all" />
+    <link rel="stylesheet" id="responsive-css"  href="{% static "layout/css/mqueries.css" %}" type="text/css" media="all" />
+
+{% endblock %}

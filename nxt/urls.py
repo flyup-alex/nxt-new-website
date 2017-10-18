@@ -18,8 +18,21 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from . import settings
 from .settings import STATIC_ROOT, STATIC_URL
+from site_settings.views import index
+from django.conf.urls import url, include
+from about.views import contact
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', index, name='index'),
+    url(r'^portfolio/', include('portfolio.urls', namespace='portfolio')),
+    url(r'^o-nas/', include('about.urls', namespace='about')),
+    url(r'^kontakt/$', contact, name='contact'),
+    url(r'^uslugi/', include('service.urls', namespace='service')),
+    url(r'^szkolenia/', include('training.urls', namespace='training')),
+    url(r'^blog/', include('blog.urls', namespace='blog')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+
 
 ] + static(STATIC_URL, document_root=STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

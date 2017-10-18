@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+
+{% block head_description %}
+    <title>NXT | {{ single_case.title }}</title>
+    <meta name="description" content="{{ single_case.description }}">
+    <meta name="keywords" content="{{ single_case.keywords }}">
+    <meta name="author" content="{{ single_case.author }}">
+
+    <meta name="og:title" content="NXT | {{ single_case.title }}">
+    <meta name="og:description" content="{{ single_case.description }}">
+    <meta name="og:type" content="{{ single_case.type }}">
+    <meta name="og:image" content="http://nxt.flyup.pro{{ single_case.top_photo_thumbnail.url }}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO & BODY -->
+    <div id="hero-and-body">
+        <section id="hero" class="hero-full text-light parallax-section width100_mobile"
+                 data-parallax-image="{{ single_case.top_photo.url }}">
+
+            <div id="page-title" class="wrapper-big">
+                <h1><strong>{{ single_case.title }}</strong></h1>
+
+                <h5>{{ single_case.trade }}</h5>
+            </div>
+
+        </section>
+        <!-- HERO -->
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            <div class="spacer-big"></div>
+
+            <div class="wrapper-small">
+                <div class="column-section spaced-big clearfix">
+                    <div class="column one-third">
+                        <img src="{{ single_case.company_relation.logotype_normal.url }}"
+                             srcset="{{ single_case.company_relation.logotype_normal.url }}"
+                             alt="{{ single_case.company_relation.name }}">
+                        <div class="spacer-medium"></div>
+                        <h4><strong>Stworzyliśmy</strong></h4>
+                        <ul class="nolist">
+                            {% for service in range_of_services %}
+                                <li>{{ service }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="spacer-medium"></div>
+                        {% if single_case.link_to_website %}
+                        <p><a href="{{ single_case.link_to_website }}" class="sr-button style-3 button-small">Zobacz stronę</a></p>
+                        {% endif %}
+                    </div>
+                    <div class="column two-third last-col">
+                        <p class="h5">{{ single_case.content|safe }}</p>
+                    </div>
+                </div> <!-- END .column-section -->
+            </div><!-- END .wrapper -->
+
+        </section>
+        <br>
+        <br>
+        <br>
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            {% for photo in portfolio_photos %}
+
+            <div id="portfolio-grid" class="isotope-grid portfolio-container style-column-2 clearfix text-light">
+
+                <div class="isotope-item portfolio-item double-width advertising repair_displaying_img">
+                    <div class="portfolio-item-inner item-inner">
+                        <a href="#" class="thumb-hover text-light">
+                            <img src="{{ photo.photo.url }}" alt="SEO">
+                            <div class="overlay-caption bottom align-left">
+                                <span class="caption-sub portfolio-category"></span>
+                                <h2 class="caption-name portfolio-name"></h2>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div> <!-- END grid -->
+
+            {% endfor %}
+
+        </section>
+        <!-- PAGEBODY -->
+
+
+        <!-- HERO & BODY -->
+    </div>
+
+{% endblock %}

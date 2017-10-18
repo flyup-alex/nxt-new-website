@@ -1,0 +1,180 @@
+{% extends 'layout.html' %}
+
+
+{% block head_description %}
+    {% load staticfiles %}
+    <title>NXT | Blog</title>
+    <meta name="description" content="Chcesz wyprzedzać konkurencję? Poznaj najnowsze trendy i odkrycia z branży">
+    <meta name="keywords" content="Blog wiedza marketing szkolenie sprzedaz ">
+
+    <meta name=”author” content=””/>
+    <meta property=”og:title” content=”Blog”/>
+    <meta property=”og:type” content=”kontakt”/>
+    <meta property=”og:image” content=”http://nxt.flyup.pro{% static 'layout/img/NXT_mini_BLOG.jpg' %}”/>
+{% endblock %}
+
+
+{% block content %}
+    <div id="hero-and-body">
+
+        <!-- HERO  -->
+        <section id="hero" class="side-left-small">
+            <div class="owl-slider hero-slider" data-autoplay="true" data-loop="true" data-dots="false">
+                {% for post in promoted_posts %}
+
+                    <div class="slider-item text-light">
+                        <div class="bg-img"
+                             style="background-image:url(http://nxt.flyup.pro{{ post.top_photo.url }});"></div>
+
+                        <a href="{% url 'blog:blog_post' title=post.title_seo %}">
+                            <div class="owl-slider-caption">
+                                <h5 class="title-alt">{{ post.trade }}</h5>
+                                <div class="spacer-small"></div>
+                                <h2><strong>{{ post.headline }}</strong></h2>
+                            </div>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div> <!-- END .owl-slider -->
+        </section>
+        <!-- HERO -->
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            <div class="spacer-small"></div>
+
+            <div class="wrapper">
+                <div id="blog-grid" class="isotope-grid style-column-2 isotope-spaced-big">
+
+                    {% for post in all_posts %}
+                        <div class="blog-item isotope-item">
+                            <div class="blog-item-inner item-inner do-anim">
+                                <div class="blog-media">
+                                    <a href="{% url 'blog:blog_post' title=post.title_seo %}" class="thumb-hover scale">
+                                        <img src="{{ post.top_photo.url }}" alt="SEO"/>
+                                    </a>
+                                </div>
+
+                                <div class="blog-info">
+                                    <div class="post-meta clearfix">
+                                        <span class="post-date">{{ post.date_time|date:"d.m.Y" }}</span>
+                                        <span class="post-cat">{{ post.trade }}</span>
+                                    </div>
+                                    <h3 class="post-name"><a
+                                            href="{% url 'blog:blog_post' title=post.title_seo %}">{{ post.title }}</a>
+                                    </h3>
+                                    <p>{{ post.shortcut }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div> <!-- END grid -->
+
+            </div> <!-- END .wrapper -->
+
+        </section>
+        <!-- PAGEBODY -->
+
+    </div>
+    <!-- HERO & BODY -->
+
+{% endblock %}
+
+
+
+
+{% block additional_scripts %}
+    {% load staticfiles %}
+
+    <script type="text/javascript" src="{% static "layout/js/jquery.owl.carousel.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "layout/js/jquery.sticky-kit.min.js" %}"></script>
+    <script>
+        // Iterate over each element and replace the tag while maintaining attributes
+        jQuery('h5').each(function () {
+
+            // Create a new element and assign it attributes from the current element
+            var NewElement = jQuery("<h6 />");
+            jQuery.each(this.attributes, function (i, attrib) {
+                jQuery(NewElement).attr(attrib.name, attrib.value);
+            });
+
+            // Replace the current element with the new one and carry over the contents
+            jQuery(this).replaceWith(function () {
+                return jQuery(NewElement).append(jQuery(this).contents());
+            });
+
+        });
+
+        jQuery('h4').each(function () {
+
+            // Create a new element and assign it attributes from the current element
+            var NewElement = jQuery("<h5 />");
+            jQuery.each(this.attributes, function (i, attrib) {
+                jQuery(NewElement).attr(attrib.name, attrib.value);
+            });
+
+            // Replace the current element with the new one and carry over the contents
+            jQuery(this).replaceWith(function () {
+                return jQuery(NewElement).append(jQuery(this).contents());
+            });
+
+        });
+
+        jQuery('h3').each(function () {
+
+            // Create a new element and assign it attributes from the current element
+            var NewElement = jQuery("<h4 />");
+            jQuery.each(this.attributes, function (i, attrib) {
+                jQuery(NewElement).attr(attrib.name, attrib.value);
+            });
+
+            // Replace the current element with the new one and carry over the contents
+            jQuery(this).replaceWith(function () {
+                return jQuery(NewElement).append(jQuery(this).contents());
+            });
+
+        });
+
+        jQuery('h2').each(function () {
+
+            // Create a new element and assign it attributes from the current element
+            var NewElement = jQuery("<h3 />");
+            jQuery.each(this.attributes, function (i, attrib) {
+                jQuery(NewElement).attr(attrib.name, attrib.value);
+            });
+
+            // Replace the current element with the new one and carry over the contents
+            jQuery(this).replaceWith(function () {
+                return jQuery(NewElement).append(jQuery(this).contents());
+            });
+
+        });
+
+        jQuery('h1').each(function () {
+
+            // Create a new element and assign it attributes from the current element
+            var NewElement = jQuery("<h2 />");
+            jQuery.each(this.attributes, function (i, attrib) {
+                jQuery(NewElement).attr(attrib.name, attrib.value);
+            });
+
+            // Replace the current element with the new one and carry over the contents
+            jQuery(this).replaceWith(function () {
+                return jQuery(NewElement).append(jQuery(this).contents());
+            });
+
+        });
+    </script>
+{% endblock %}
+
+{% block additional_headlinks %}
+
+    <link rel="stylesheet" id="owlcarousel-css" href="{% static "layout/css/owl.carousel.css" %}" media="all"/>
+    <link rel="stylesheet" id="responsive-css" href="{% static "layout/css/mqueries.css" %}" type="text/css"
+          media="all"/>
+
+{% endblock %}
+

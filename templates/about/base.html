@@ -1,0 +1,188 @@
+{% extends 'layout.html' %}
+
+{% block head_description %}
+    {% load staticfiles %}
+    <title>NXT | O nas</title>
+    <meta name="description" content="Rzuć nam wyzwanie i pozwól działać. Patrz na efekty. Razem możemy więcej!">
+    <meta name="keywords" content="Blog wiedza marketing szkolenie sprzedaz ">
+
+    <meta name=”author” content=””/>
+    <meta property=”og:title” content=”Poznaj nas”/>
+    <meta property=”og:type” content=”kontakt”/>
+    <meta property=”og:image” content=”http://nxt.flyup.pro{% static 'layout/img/NXT_mini_O_NAS.jpg' %}”/>
+{% endblock %}
+
+
+
+{% block content %}
+
+    <!-- HERO & BODY -->
+    <div id="hero-and-body">
+
+        <!-- HERO  -->
+        <section id="hero" class="hero-big"
+                 style="background: url({{ about_content.top_photo.url }}); background-size: cover; background-position: center center;">
+            <div id="page-title" class="wrapper">
+                <!-- <h1 class="h2">We are a full service agency<br>based in London</h1> -->
+            </div>
+        </section>
+        <!-- HERO -->
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            <div class="wrapper">
+
+                <div class="spacer-big"></div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-fourth">
+                        <h5 class="title-alt"><strong>O nas</strong></h5>
+                        <img class="full-width-photo" src="{{ about_content.ceo_photo.url }}">
+                    </div>
+                    <div class="column three-fourth last-col move_to_down">
+                        <h4>{{ about_content.ceo_description|linebreaks }}</h4>
+                        <h6 class="left"><br>{{ about_content.ceo_signature }}</h6>
+                        <img class="signature" src="{{ about_content.ceo_signature_photo.url }}">
+                    </div>
+                </div> <!-- END .column-section -->
+
+                <!--	<div class="spacer-big"></div>
+
+                    <div class="column-section clearfix">
+                        <div class="column one-fourth">
+                            <h5 class="title-alt"><strong>Usługi</strong></h5>
+                        </div>
+                        <div class="column one-fourth">
+                            <ul class="nolist biglist">
+                                <li>Branding</li>
+                                <li>Strategie</li>
+                                <li>Kampanie</li>
+                            </ul>
+                        </div>
+                        <div class="column one-fourth">
+                            <ul class="nolist biglist">
+                                <li>Doradztwo marketingowe</li>
+                                <li>Doradztwo strategiczne</li>
+                                <li>Szkolenia</li>
+                            </ul>
+                        </div>
+                        <div class="column one-fourth last-col">
+                            <ul class="nolist biglist">
+                                <li>Marketing wystawienniczy</li>
+                                <li>Projektowanie opakowań</li>
+                                <li>Serwisy www</li>
+                            </ul>
+                        </div>
+                    </div>  END .column-section -->
+
+                <div class="spacer-small"></div>
+
+            </div> <!-- END .wrapper -->
+
+            <!-- The fullwidth section is only needed for the logo color switch -->
+            <div class="fullwidth-section text-light" style="background: #000000;">
+
+                <div class="fullwidth-content wrapper-big align-center logos_container">
+                    <h3 class="margin_bottom">{{ about_content.brand_headline }}</h3>
+                    <!--	<p class="do-anim"><img src="files/uploads/about_page/example-logos-big-1.png" srcset="files/uploads/example-logos-big.png 1x, files/uploads/example-logos-big@2x.png 2x" alt="SEO"></p>
+                        <div class="spacer-big"></div>
+                        <p class="do-anim"><img src="files/uploads/about_page/example-logos-big-2.png" srcset="files/uploads/example-logos-big-2.png 1x, files/uploads/example-logos-big-2@2x.png 2x" alt="SEO"></p>
+                        <div class="spacer-big"></div>
+                        <p class="do-anim"><img src="files/uploads/about_page/example-logos-big-3.png" srcset="files/uploads/example-logos-big-2.png 1x, files/uploads/example-logos-big-2@2x.png 2x" alt="SEO"></p>-->
+                    {% for company in companies %}
+                        <div class="col-sm-4"><img src="{{ company.logotype_light.url }}"></div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="spacer-big"></div>
+
+            <div class="wrapper">
+
+                <div class="column-section spaced-big clearfix">
+                    <div class="column one-fifth">
+                        <h5 class="title-alt"><strong>Poznaj nas</strong></h5>
+                    </div>
+                    <div class="column two-fifth">
+                        <div class="team-member">
+                            <div class="do-anim-modern"> <!-- div is only needed for the do-anim-modern effect -->
+                                <img class="team-pic" src="{{ employer1.profile_photo.url }}" alt="SEO">
+                            </div>
+                            <div class="team-infos">
+                                <h4 class="team-name">{{ employer1.name }} {{ employer1.last_name }}</h4>
+                                <h5 class="team-role">{{ employer1.position }}</h5>
+                                <h5 class="team-about">{{ employer1.description|safe }}</h5>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="do-anim-modern"> <!-- div is only needed for the do-anim-modern effect -->
+                                <img class="team-pic" src="{{ employer2.profile_photo.url }}" alt="SEO">
+                            </div>
+                            <div class="team-infos">
+                                <h4 class="team-name">{{ employer2.name }} {{ employer2.last_name }}</h4>
+                                <h5 class="team-role">{{ employer2.position }}</h5>
+                                <h5 class="team-about">{{ employer2.description|safe }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column two-fifth last-col">
+                        <!--	<div class="team-member">
+							<div class="do-anim-modern"> 
+							<img class="team-pic" src="{{ employer3.profile_photo.url }}" alt="SEO">
+							</div>
+							<div class="team-infos">
+								<h4 class="team-name">{{ employer3.name }} {{ employer3.last_name }}</h4>
+								<h5 class="team-role">{{ employer3.position }}</h5>
+								<h5 class="team-about">{{ employer3.description|safe }}</h5>
+							</div>
+						</div>-->
+                        <div class="team-member">
+                            <div class="do-anim-modern"> <!-- div is only needed for the do-anim-modern effect -->
+                                <img class="team-pic" src="{{ employer4.profile_photo.url }}" alt="SEO">
+                            </div>
+                            <div class="team-infos">
+                                <h4 class="team-name">{{ employer4.name }} {{ employer4.last_name }}</h4>
+                                <h5 class="team-role">{{ employer4.position }}</h5>
+                                <h5 class="team-about">{{ employer4.description|safe }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END .column-section -->
+
+                <!--	<div class="spacer-big"></div>
+
+                    <div class="column-section spaced-big clearfix">
+                        <div class="column one-fifth">
+                            <h5 class="title-alt"><strong>Osiągnięcia</strong></h5>
+                        </div>
+                        <div class="column two-fifth do-anim">
+                            <h3>Za każdym osiągnięciem stoją niesamowici ludzie.</h3>
+                        </div>
+                        <div class="column two-fifth do-anim last-col">
+                            <ul class="nolist biglist">
+                                <li><small class="title-alt"></small> <strong>1 miejsce</strong> w niespełna trzy lata wykreowanie lidera rynku</li>
+                                <li><small class="title-alt"></small> <strong>150%</strong> o tyle wzrosła sprzedaż naszego klienta</li>
+                                <li><small class="title-alt"></small> <strong>246%</strong> wzrost sprzedaży po przeprowadzonej kampanii </li>
+                                <li><small class="title-alt"></small> <strong>129</strong> zrealizowanych filmów</li>
+                                <li><small class="title-alt"></small> <strong>1 milion </strong>odsłon strony kampanijnej</li>
+                                <li><small class="title-alt"></small> <strong>ponad 50</strong> przeprowadzonych konkursów</li>
+                                <li><small class="title-alt"></small> <strong>12 lat</strong> na rynku</li>
+
+
+                            </ul>
+                        </div>
+                    </div>  END .column-section -->
+
+            </div> <!-- END .wrapper-big -->
+
+            <div class="spacer-big"></div>
+
+        </section>
+        <!-- PAGEBODY -->
+
+    </div>
+    <!-- HERO & BODY -->
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+
+{% block head_description %}
+    <title>NXT | {{ single_case.title }}</title>
+    <meta name="description" content="{{ single_case.description }}">
+    <meta name="keywords" content="{{ single_case.keywords }}">
+    <meta name="author" content="{{ single_case.author }}">
+
+    <meta name="og:title" content="NXT | {{ single_case.title }}">
+    <meta name="og:description" content="{{ single_case.description }}">
+    <meta name="og:type" content="{{ single_case.type }}">
+    <meta name="og:image" content="http://nxt.flyup.pro{{ single_case.top_photo_thumbnail.url }}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO & BODY -->
+    <div id="hero-and-body">
+        <section id="hero" class="hero text-light parallax-section service-case-photo"
+                 data-parallax-image="{{ single_case.top_photo.url }}">
+
+            <div id="page-title" class="wrapper-big">
+                <h1><strong>{{ single_case.title }}</strong></h1>
+
+                <h5>{{ single_case.trade }}</h5>
+            </div>
+
+        </section>
+        <!-- HERO -->
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+            <div class="spacer-big"></div>
+
+            <div class="wrapper wrapper-training">
+
+                    {{ single_case.content|safe }}
+
+            </div><!-- END .wrapper -->
+
+        </section>
+        <br>
+        <br>
+        <br>
+
+        <!-- HERO & BODY -->
+    </div>
+
+{% endblock %}

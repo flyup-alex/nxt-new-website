@@ -1,0 +1,292 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+<head>
+
+    <!-- DEFAULT META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    {% load static %}
+
+    <!-- FONTS -->
+    <link href="http://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" type="text/css">
+    <link href="{% static "layout/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" id="default-style-css" href="{% static "layout/css/style.css" %}" type="text/css"
+          media="all">
+    <link rel="stylesheet" id="default-style-css2" href="{% static "layout/css/style2.css" %}" type="text/css"
+          media="all">
+    <link rel="stylesheet" id="fontawesome-style-css" href="{% static "layout/css/font-awesome.min.css" %}"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="ionic-icons-style-css" href="{% static "layout/css/ionicons.css" %}" type="text/css"
+          media="all">
+    <link rel="stylesheet" id="isotope-style-css" href="{% static "layout/css/isotope.css" %}" type="text/css"
+          media="all">
+    <link rel="stylesheet" id="revolution-slider-main-css" href="{% static "layout/css/revolution/settings.css" %}"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="revolution-slider-layer-css" href="{% static "layout/css/revolution/layers.css" %}"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="revolution-slider-nav-css" href="{% static "layout/css/revolution/navigation.css" %}"
+          type="text/css" media="all">
+    <link rel="stylesheet" id="responsive-css" href="{% static "layout/css/mqueries.css" %}" type="text/css"
+          media="all">
+    <link rel="stylesheet" id="bootstrap-css" href="{% static "layout/css/bootstrap.css" %}" type="text/css"
+          media="all">
+    {% block additional_headlinks %}
+    {% endblock %}
+    <script type="text/javascript"
+            src="//platform-api.sharethis.com/js/sharethis.js#property=599e9ed387742800112256c5&product=inline-share-buttons"></script>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="{% static 'layout/img/NXT_mini_HOME.jpg' %}">
+
+
+    <!-- DOCUMENT TITLE BLOCK-->
+    {% block head_description %}
+        <title>NXT | Creative Agency</title>
+        <meta name="description" content="Wiemy jak zmienić potencjalnego odbiorcę w zaangażowanego klienta Twojej marki!">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+
+        <meta name="author" content="#">
+        <meta property="og:title"
+              content="Krok do sukcesu!">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="{% static 'layout/img/NXT_mini_HOME.jpg' %}">
+    {% endblock %}
+
+
+</head>
+
+<body>
+
+<!-- PAGE LOADER -->
+<div id="page-loader" class="text-light show-logo">
+    <span class="loader-icon bullets-jump"><span></span><span></span><span></span></span>
+</div>
+<!-- PAGE LOADER -->
+
+
+<!-- PAGE CONTENT -->
+<div id="page-content">
+
+    <!-- HEADER -->
+    <header id="header" class="header-left">
+        <div class="header-inner clearfix">
+
+            <!-- LOGO -->
+            <div id="logo" class="logo-left text-light">
+                <a href="{% url 'index' %}">
+                    <img id="dark-logo" src="{% static "layout/img/logo-noha-dark.png" %}" alt="nxt logo dark">
+                    <img id="light-logo" src="{% static "layout/img/logo-noha-light.png" %}" alt="nxt logo light">
+                </a>
+            </div>
+
+            <!-- MAIN NAVIGATION -->
+            <div id="menu" class="clearfix">
+
+                <div class="menu-actions">
+                    <div class="menu-toggle"><span class="hamburger"></span></div>
+                </div> <!-- END .menu-actions -->
+
+                <div id="menu-inner">
+                    <nav id="main-nav">
+                        <ul>
+                            <li><a href="{% url 'index' %}">Home</a>
+                            </li>
+
+                            <li><a href="{% url 'service:index' %}">Usługi</a>
+                            </li>
+
+                            <li><a href="{% url 'training:index' %}">Szkolenia</a>
+                            </li>
+
+                            <li><a href="{% url 'portfolio:index' %}">Portfolio</a>
+                            </li>
+
+                            <li><a href="{% url 'about:index' %}">O nas</a>
+                            </li>
+
+                            <li><a href="{% url 'blog:blog_index' %}">Blog</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'contact' %}">Kontakt</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div><!-- END #menu-inner -->
+            </div><!-- END #menu -->
+
+            {% block header-action %}
+
+            {% endblock %}
+            <div class="header-totop">
+                <a class="totop" href="#">
+                    <svg class="arrow arrow-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 35.35">
+                        <path d="M0,16.88a3,3,0,0,0,.16.94,1.51,1.51,0,0,0,.63.78l15,15a2.14,2.14,0,0,0,3.52.08,2.14,2.14,0,0,0-.08-3.52L8.59,19.38H57.5a2.5,2.5,0,1,0,0-5H8.59L19.22,3.59A2.14,2.14,0,0,0,19.3.08a2.14,2.14,0,0,0-3.52.08l-15,15a1.51,1.51,0,0,0-.62.78A3,3,0,0,0,0,16.88Z"></path>
+                    </svg>
+                </a>
+
+            </div>
+
+
+            {% block filter %}
+
+            {% endblock %}
+
+            <div id="header-widget" class="widget-net">
+                <a class="leave-on-mobile-widget" target="_blank" href="https://www.facebook.com/NEXTDAYAGENCY/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+
+                <br>
+
+                <a class="leave-on-mobile-widget" target="_blank" href="https://twitter.com/NXT_day">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <br>
+
+                <a target="_blank" href="https://www.youtube.com/channel/UCPMb0yBtO_h75NG0uR5fy0w">
+                    <i class="fa fa-youtube"></i>
+                </a>
+
+                <br>
+
+                <a target="_blank" href="https://www.linkedin.com/company/nextday-creative-agency">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+
+                <br>
+
+                <a target="_blank" href="https://www.behance.net/nextday">
+                    <i class="fa fa-behance-square"></i>
+                </a>
+            </div>
+
+        </div> <!-- END .header-inner -->
+        <span class="pseudo-close header-close"></span>
+    </header>
+    <!-- HEADER end -->
+
+
+    {% block content %}
+
+
+
+
+
+    {% endblock %}
+
+    <!-- FOOTER -->
+    <footer id="footer" class="text-light">
+        <div class="footer-inner wrapper">
+
+            <div class="column-section spaced-big clearfix">
+                <div class="column one-third">
+                    <div class="widget">
+                        <h3><img src="{% static "layout/img/logo-noha-light.png" %}"></h3>
+                        <div class="spacer-small"></div>
+                        <p>Prosta 135b<br>Rybnik<br>Tel: +32 433 10 48<br></p>
+                    </div>
+                    <div class="widget">
+                    </div>
+                </div>
+
+                <div class="column one-third">
+                    <div class="widget">
+                        <h5 class="widget-title title-alt"><strong>Social Media</strong></h5>
+                        <ul class="menu">
+                            <li><a target="_blank" href="https://web.facebook.com/NEXTDAYAGENCY/">Facebook</a></li>
+                            <li><a target="_blank" href="https://www.linkedin.com/company/nextday-creative-agency">Linked
+                                In</a></li>
+                            <li><a target="_blank" href="https://www.behance.net/nextday">Behance</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="column one-third last-col">
+                    <div class="widget">
+                        <h5 class="widget-title title-alt"><strong>Poznaj nas</strong></h5>
+                        <ul class="menu">
+                            <li><a href="{% url 'service:index' %}">Usługi</a></li>
+                            <li><a href="{% url 'training:index' %}">Szkolenia</a></li>
+                            <li><a href="{% url 'about:index' %}">O nas</a></li>
+                            <li><a href="{% url 'portfolio:index' %}">Portfolio</a></li>
+                            <li><a href="{% url 'blog:blog_index' %}">Blog</a></li>
+                            <li><a href="{% url 'contact' %}">Kontakt</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- FOOTER -->
+
+</div> <!-- END #page-content -->
+<!-- PAGE CONTENT -->
+
+<!-- SCRIPTS -->
+<script src="{% static "layout/js/jquery-1.12.4.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/plugins.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/revolution/jquery.themepunch.tools.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/revolution/jquery.themepunch.revolution.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "layout/js/revolution/extensions/revolution.extension.slideanims.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "layout/js/revolution/extensions/revolution.extension.layeranimation.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "layout/js/revolution/extensions/revolution.extension.navigation.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "layout/js/revolution/extensions/revolution.extension.video.min.js" %}"></script>
+<script type="text/javascript"
+        src="{% static "layout/js/revolution/extensions/revolution.extension.actions.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/jquery.imagesloaded.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/jquery.isotope.min.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/script.js" %}"></script>
+
+<!-- SCRIPTS -->
+
+<!-- SCRIPTS -->
+
+<script type="text/javascript" src="{% static "layout/js/jquery.min.phatvideobg.js" %}"></script>
+<script type="text/javascript" src="{% static "layout/js/jquery.backgroundparallax.min.js" %}"></script>
+<!-- SCRIPTS -->
+{% block additional_scripts %}
+
+{% endblock %}
+
+<!-- BEGIN callpage.io widget -->
+<script type="text/javascript">var __cp = {"id": "kMMIJeGVEUgFj4E7CI7GG9T5ghElakUYzpZfeoV30ek", "version": "1.1"};
+(function (window, document) {
+    var cp = document.createElement('script');
+    cp.type = 'text/javascript';
+    cp.async = true;
+    cp.src = "++cdn-widget.callpage.io+build+js+callpage.js".replace(/[+]/g, '/').replace(/[=]/g, '.');
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(cp, s);
+    if (window.callpage) {
+        alert('You could have only 1 CallPage code on your website!');
+    } else {
+        window.callpage = function (method) {
+            if (method == '__getQueue') {
+                return this.methods;
+            }
+            else if (method) {
+                if (typeof window.callpage.execute === 'function') {
+                    return window.callpage.execute.apply(this, arguments);
+                }
+                else {
+                    (this.methods = this.methods || []).push({arguments: arguments});
+                }
+            }
+        };
+        window.callpage.__cp = __cp;
+        window.callpage('api.button.autoshow');
+    }
+})(window, document);</script>
+<!-- END callpage.io widget -->
+
+</body>
+</html>

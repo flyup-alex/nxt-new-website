@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+
+{% block head_description %}
+    {% load staticfiles %}
+    <title>NXT | Kontakt</title>
+    <meta name="description" content="Podejmijmy efektywne działania, które sprawią, że Twoja marka stanie się rozpoznawalna!">
+    <meta name="keywords" content="Agencja Kontakt Telefon zadzwoń">
+
+    <meta name=”author” content=””/>
+    <meta property=”og:title” content=”Kontakt”/>
+    <meta property=”og:type” content=”kontakt”/>
+    <meta property=”og:image” content=”http://nxt.flyup.pro{% static 'layout/img/NXT_mini_KONTAKT.jpg' %}”/>
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- HERO & BODY -->
+    <div id="hero-and-body">
+
+        <!-- HERO  -->
+        <section id="hero" class="hero-big"
+                 style="background: url({{ contact_content.top_photo.url }}); background-size: cover; background-position: center center;">
+            <div id="page-title" class="wrapper">
+                <!-- <h1 class="h2">We are a full service agency<br>based in London</h1> -->
+            </div>
+        </section>
+        <!-- HERO -->
+
+        <!-- PAGEBODY -->
+        <section id="page-body">
+
+
+            <div class="spacer-big"></div>
+
+            <div class="wrapper">
+
+                <div class="column-section spaced-big clearfix">
+                    <div class="column one-fifth">
+                        <h5 class="title-alt"><strong>Porozmawiajmy!</strong></h5>
+                    </div>
+                    <div class="column two-fifth">
+                        <div class="team-member">
+                            <div class="do-anim-modern"> <!-- div is only needed for the do-anim-modern effect -->
+                                <img class="team-pic" src="{{ employer1.profile_photo.url }}" alt="SEO">
+                            </div>
+                            <div class="team-infos">
+                                <h4 class="team-name">{{ employer1.name }} {{ employer1.last_name }}</h4>
+                                <h5 class="team-role">{{ employer1.position }}</h5>
+                                <h5 class="team-role">{{ employer1.phone_number }}</h5>
+                                <h5 class="team-role">{{ employer1.mail }}</h5>
+                            </div>
+                        </div>
+                         <div class="team-member">
+                            <div class="do-anim-modern"> <!-- div is only needed for the do-anim-modern effect -->
+                                <img class="team-pic" src="{{ employer3.profile_photo.url }}" alt="SEO">
+                            </div>
+                            <div class="team-infos">
+                                <h4 class="team-name">{{ employer3.name }} {{ employer3.last_name }}</h4>
+                                <h5 class="team-role">{{ employer3.position }}</h5>
+                                <h5 class="team-role">{{ employer3.phone_number }}</h5>
+                                <h5 class="team-role">{{ employer3.mail }}</h5>
+                            </div>
+                            <div class="team-infos">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column two-fifth last-col">
+                   
+                        <div class="team-member">
+                            <div class="do-anim-modern"> <!-- div is only needed for the do-anim-modern effect -->
+                                <img class="team-pic" src="{{ employer4.profile_photo.url }}" alt="SEO">
+                            </div>
+                            <div class="team-infos">
+                                <h4 class="team-name">{{ employer4.name }} {{ employer4.last_name }}</h4>
+                                <h5 class="team-role">{{ employer4.position }}</h5>
+                                <h5 class="team-role">{{ employer4.phone_number }}</h5>
+                                <h5 class="team-role">{{ employer4.mail }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END .column-section -->
+
+                <div class="spacer-big"></div>
+
+
+            </div> <!-- END .wrapper-big -->
+
+            <div class="spacer-big"></div>
+
+        </section>
+        <!-- PAGEBODY -->
+
+    </div>
+    <!-- HERO & BODY -->
+
+
+{% endblock %}
